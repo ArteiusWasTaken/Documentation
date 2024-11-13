@@ -1,0 +1,75 @@
+<!DOCTYPE html SYSTEM "about:legacy-compat">
+<html lang="en-US" data-preset="contrast" data-primary-color="#307FFF"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta charset="UTF-8"><meta name="robots" content="noindex"><meta name="built-on" content="2024-11-12T18:48:18.9439511"><title>Instalar PrintServer | Documentacion</title><script type="application/json" id="virtual-toc-data">[{"id":"instalaci-n-de-apache-y-git","level":0,"title":"Instalación de Apache y Git","anchor":"#instalaci-n-de-apache-y-git"},{"id":"instalaci-n-de-php-y-composer","level":0,"title":"Instalación de PHP y Composer","anchor":"#instalaci-n-de-php-y-composer"},{"id":"configuraci-n-de-apache","level":0,"title":"Configuración de Apache","anchor":"#configuraci-n-de-apache"},{"id":"configuraci-n-del-proyecto","level":0,"title":"Configuración del Proyecto","anchor":"#configuraci-n-del-proyecto"}]</script><script type="application/json" id="topic-shortcuts"></script><link href="https://resources.jetbrains.com/writerside/apidoc/6.10.0-b419/app.css" rel="stylesheet"><meta name="msapplication-TileColor" content="#000000"><link rel="apple-touch-icon" sizes="180x180" href="https://jetbrains.com/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="https://jetbrains.com/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="https://jetbrains.com/favicon-16x16.png"><meta name="msapplication-TileImage" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-144x144.png"><meta name="msapplication-square70x70logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-70x70.png"><meta name="msapplication-square150x150logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-150x150.png"><meta name="msapplication-wide310x150logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-310x150.png"><meta name="msapplication-square310x310logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-310x310.png"><meta name="image" content=""><!-- Open Graph --><meta property="og:title" content="Instalar PrintServer | Documentacion"><meta property="og:description" content=""><meta property="og:image" content=""><meta property="og:site_name" content="Documentacion Help"><meta property="og:type" content="website"><meta property="og:locale" content="en_US"><meta property="og:url" content="writerside-documentation/install-printserver.html"><!-- End Open Graph --><!-- Twitter Card --><meta name="twitter:card" content="summary_large_image"><meta name="twitter:site" content=""><meta name="twitter:title" content="Instalar PrintServer | Documentacion"><meta name="twitter:description" content=""><meta name="twitter:creator" content=""><meta name="twitter:image:src" content=""><!-- End Twitter Card --><!-- Schema.org WebPage --><script type="application/ld+json">{
+    "@context": "http://schema.org",
+    "@type": "WebPage",
+    "@id": "writerside-documentation/install-printserver.html#webpage",
+    "url": "writerside-documentation/install-printserver.html",
+    "name": "Instalar PrintServer | Documentacion",
+    "description": "",
+    "image": "",
+    "inLanguage":"en-US"
+}</script><!-- End Schema.org --><!-- Schema.org WebSite --><script type="application/ld+json">{
+    "@type": "WebSite",
+    "@id": "writerside-documentation/#website",
+    "url": "writerside-documentation/",
+    "name": "Documentacion Help"
+}</script><!-- End Schema.org --></head><body data-id="Install-PrintServer" data-main-title="Instalar PrintServer" data-article-props="{&quot;seeAlsoStyle&quot;:&quot;links&quot;}" data-template="article" data-breadcrumbs=""><div class="wrapper"><main class="panel _main"><header class="panel__header"><div class="container"><h3>Documentacion  Help</h3><div class="panel-trigger"></div></div></header><section class="panel__content"><div class="container"><article class="article" data-shortcut-switcher="inactive"><h1 data-toc="Install-PrintServer" id="Install-PrintServer.md">Instalar PrintServer</h1><section class="chapter"><h2 id="instalaci-n-de-apache-y-git" data-toc="instalaci-n-de-apache-y-git">Instalaci&oacute;n de Apache y Git</h2><ol class="list _decimal" id="-k9fvm1_7" type="1"><li class="list__item" id="-k9fvm1_9"><p id="-k9fvm1_10">Instalar ambos paquetes:</p><div class="code-block" data-lang="bash">
+sudo apt-get install apache2
+sudo apt-get install git
+</div></li></ol><ul class="list _bullet" id="-k9fvm1_8"><li class="list__item" id="-k9fvm1_12"><p>Hasta el momento, las versiones actuales funcionan sin problema.</p></li></ul></section><section class="chapter"><h2 id="instalaci-n-de-php-y-composer" data-toc="instalaci-n-de-php-y-composer">Instalaci&oacute;n de PHP y Composer</h2><ol class="list _decimal" id="-k9fvm1_13" type="1"><li class="list__item" id="-k9fvm1_15"><p id="-k9fvm1_18">Configuramos el repositorio par descargar la version antigua:</p><div class="code-block" data-lang="bash">
+echo &quot;deb http://archive.debian.org/debian buster main&quot; | sudo tee /etc/apt/sources.list.d/buster.list
+sudo apt clean
+sudo apt update
+
+</div></li><li class="list__item" id="-k9fvm1_16"><p id="-k9fvm1_20">El proyecto necesita una versi&oacute;n especifica de PHP:</p><div class="code-block" data-lang="bash">
+sudo apt install php-common=2:69
+sudo apt install php7.3
+sudo apt install php7.3-curl php7.3-gd php7.3-mbstring php7.3-mysql php7.3-xml
+
+</div></li><li class="list__item" id="-k9fvm1_17"><p id="-k9fvm1_22">Instalar Composer:</p><div class="code-block" data-lang="bash">
+mkdir php
+cd php
+php -r &quot;copy('https://getcomposer.org/installer', 'composer-setup.php');&quot;
+php composer-setup.php --version=2.0.10
+sudo mv composer.phar /usr/local/bin/composer
+composer -v
+
+</div></li></ol><ul class="list _bullet" id="-k9fvm1_14"><li class="list__item" id="-k9fvm1_24"><p>Esto Instalar&aacute; php 7.3 y Composer 2.0.10</p></li></ul></section><section class="chapter"><h2 id="configuraci-n-de-apache" data-toc="configuraci-n-de-apache">Configuraci&oacute;n de Apache</h2><ol class="list _decimal" id="-k9fvm1_25" type="1"><li class="list__item" id="-k9fvm1_26"><p id="-k9fvm1_29">Abrimos el archivo de configuraci&oacute;n de apache:</p><div class="code-block" data-lang="bash">
+sudo nano /etc/apache2/apache2.conf
+
+</div></li><li class="list__item" id="-k9fvm1_27"><p id="-k9fvm1_31">Nos aseguramos de que contenga las siguientes configuraciones, normalmente el cambio es en 'AllowOverride'</p><div class="code-block" data-lang="ini">
+&lt;Directory /&gt;
+ Options FollowSymLinks
+ AllowOverride None
+ Require all denied
+&lt;/Directory&gt;
+
+&lt;Directory /usr/share&gt;
+    AllowOverride None
+    Require all granted
+&lt;/Directory&gt;
+
+&lt;Directory /var/www/&gt;
+    Options Indexes FollowSymLinks
+    AllowOverride All
+    Require all granted
+&lt;/Directory&gt;
+
+</div></li><li class="list__item" id="-k9fvm1_28"><p id="-k9fvm1_33">Guarda y cierra el archivo (Ctrl + X, luego Y, y presiona Enter).</p></li></ol></section><section class="chapter"><h2 id="configuraci-n-del-proyecto" data-toc="configuraci-n-del-proyecto">Configuraci&oacute;n del Proyecto</h2><ol class="list _decimal" id="-k9fvm1_34" type="1"><li class="list__item" id="-k9fvm1_35"><p id="-k9fvm1_41">Navega al directorio /var/www/html/ y luego clona el proyecto (probablement se necesite una contrase&ntilde;a de aplicaci&oacute;n)</p><div class="code-block" data-lang="bash">
+cd /var/www/html/raspberry-print-server/
+
+</div></li><li class="list__item" id="-k9fvm1_36"><p id="-k9fvm1_43">Instala las dependencias de Composer:</p><div class="code-block" data-lang="bash">
+sudo composer install
+
+</div></li><li class="list__item" id="-k9fvm1_37"><p id="-k9fvm1_45">Habilita el m&oacute;dulo rewrite de Apache y reinicia el servicio:</p><div class="code-block" data-lang="bash">
+sudo a2enmod rewrite
+sudo systemctl restart apache2
+
+</div></li><li class="list__item" id="-k9fvm1_38"><p id="-k9fvm1_47">Instalamos las libreras de Python faltantes (python-escpos):</p><div class="code-block" data-lang="bash">
+sudo -H python3 -m pip install python-escpos --break-system-packages
+
+</div></li><li class="list__item" id="-k9fvm1_39"><p id="-k9fvm1_49">Instalamos las libreras de Python faltantes (pytz):</p><div class="code-block" data-lang="bash">
+sudo -H python3 -m pip install pytz --break-system-packages
+
+</div></li><li class="list__item" id="-k9fvm1_40"><p id="-k9fvm1_51">Preferencia personal, reiniciamos el sistema:</p><div class="code-block" data-lang="bash">
+sudo reboot</div></li></ol></section><div class="last-modified">Last modified: 13 noviembre 2024</div><div data-feedback-placeholder="true"></div><div class="navigation-links _bottom"><a href="install-noip2.html" class="navigation-links__prev">Instalaci&oacute;n y Configuraci&oacute;n de No-IP en Raspberry Pi</a></div></article><div id="disqus_thread"></div></div></section></main></div><script src="https://resources.jetbrains.com/writerside/apidoc/6.10.0-b419/app.js"></script></body></html>

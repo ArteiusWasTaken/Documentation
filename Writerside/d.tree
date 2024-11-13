@@ -4,7 +4,8 @@
 
 <instance-profile id="d"
                  name="Documentacion"
-                 start-page="empty-md-topic.md">
+                 start-page="Install-Noip2.md">
 
-    <toc-element topic="empty-md-topic.md"/>
+    <toc-element topic="Install-Noip2.md"/>
+    <toc-element topic="Install-PrintServer.md"/>
 </instance-profile>
