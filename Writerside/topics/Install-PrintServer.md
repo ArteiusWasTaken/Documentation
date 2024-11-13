@@ -63,15 +63,16 @@
 
 ## Configuración del Proyecto
 
-1. Navega al directorio /var/www/html/ y luego clona el proyecto (probablement se necesite una contraseña de aplicación)
+1. Navegamoa al directorio /var/www/html/ y luego clona el proyecto (probablemente se necesite una contraseña de aplicación)
+   ```bash
+   cd /var/www/html/
+
+2. Instalamos las dependencias de Composer:
    ```bash
    cd /var/www/html/raspberry-print-server/
-
-2. Instala las dependencias de Composer:
-   ```bash
    sudo composer install
 
-3. Habilita el módulo rewrite de Apache y reinicia el servicio:
+3. Habilitamos el módulo rewrite de Apache y reinicia el servicio:
    ```bash
    sudo a2enmod rewrite
    sudo systemctl restart apache2
